@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/github_search/static/css/main.83ab0553.chunk.css",
-    "main.js": "/github_search/static/js/main.eec89b64.chunk.js",
-    "main.js.map": "/github_search/static/js/main.eec89b64.chunk.js.map",
-    "runtime~main.js": "/github_search/static/js/runtime~main.2253de22.js",
-    "runtime~main.js.map": "/github_search/static/js/runtime~main.2253de22.js.map",
-    "static/js/2.215677f8.chunk.js": "/github_search/static/js/2.215677f8.chunk.js",
-    "static/js/2.215677f8.chunk.js.map": "/github_search/static/js/2.215677f8.chunk.js.map",
-    "index.html": "/github_search/index.html",
-    "precache-manifest.1a5c97c226f1d61c2225e4f0bb78de8c.js": "/github_search/precache-manifest.1a5c97c226f1d61c2225e4f0bb78de8c.js",
-    "service-worker.js": "/github_search/service-worker.js",
-    "static/css/main.83ab0553.chunk.css.map": "/github_search/static/css/main.83ab0553.chunk.css.map"
+    "main.css": "danielklys7.github.io/github_search/static/css/main.83ab0553.chunk.css",
+    "main.js": "danielklys7.github.io/github_search/static/js/main.e9e59b43.chunk.js",
+    "main.js.map": "danielklys7.github.io/github_search/static/js/main.e9e59b43.chunk.js.map",
+    "runtime~main.js": "danielklys7.github.io/github_search/static/js/runtime~main.230a5947.js",
+    "runtime~main.js.map": "danielklys7.github.io/github_search/static/js/runtime~main.230a5947.js.map",
+    "static/js/2.215677f8.chunk.js": "danielklys7.github.io/github_search/static/js/2.215677f8.chunk.js",
+    "static/js/2.215677f8.chunk.js.map": "danielklys7.github.io/github_search/static/js/2.215677f8.chunk.js.map",
+    "index.html": "danielklys7.github.io/github_search/index.html",
+    "precache-manifest.bba892157b60815116dfa3ce06c6d15c.js": "danielklys7.github.io/github_search/precache-manifest.bba892157b60815116dfa3ce06c6d15c.js",
+    "service-worker.js": "danielklys7.github.io/github_search/service-worker.js",
+    "static/css/main.83ab0553.chunk.css.map": "danielklys7.github.io/github_search/static/css/main.83ab0553.chunk.css.map"
   }
 }
