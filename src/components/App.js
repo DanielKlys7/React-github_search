@@ -53,19 +53,21 @@ class App extends Component {
         inputValue: ''
       })
     }
+    localStorage.setItem("users", JSON.stringify(this.state.users))
   };
 
   handleDeleteClick = (e) => {
     e.preventDefault();
     this.setState({
-      users: this.state.users.filter(user => user.id != e.target.id)
+      users: this.state.users.filter(user => user.id !== parseInt(e.target.id))
     })
+    localStorage.setItem("users", JSON.stringify(this.state.users))
   }
 
   handleFavoriteClick = (e) => {
     e.preventDefault()
     const users = this.state.users.map(user => {
-      if (user.id == e.target.id) {
+      if (user.id === parseInt(e.target.id)) {
         if (!user.favorite) {
           user.favorite = true;
         } else {
@@ -77,6 +79,7 @@ class App extends Component {
     this.setState({
       users: users,
     })
+    localStorage.setItem("users", JSON.stringify(this.state.users))
   }
 
   handleAllDisplay = () => {
@@ -89,6 +92,15 @@ class App extends Component {
     this.setState({
       display: "favorite",
     })
+  }
+
+  componentDidMount() {
+    if (localStorage.getItem("users") !== null) {
+      const users = JSON.parse(localStorage.getItem("users"));
+      this.setState({
+        users: users,
+      })
+    }
   }
 
 
