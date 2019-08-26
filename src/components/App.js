@@ -11,6 +11,7 @@ class App extends Component {
     this.handleAddButton = this.handleAddButton.bind(this);
     this.handleFetchData = this.handleFetchData.bind(this);
   }
+
   state = {
     inputValue: '',
     users: [],
@@ -38,7 +39,6 @@ class App extends Component {
     this.state.users.forEach(singleUser => {
       if ((fetchedData !== undefined) && (singleUser.login === fetchedData.login)) {
         noDuplicate = false;
-
       }
     })
     if ((fetchedData !== undefined) && (noDuplicate === true)) {
@@ -53,15 +53,14 @@ class App extends Component {
         inputValue: ''
       })
     }
-    localStorage.setItem("users", JSON.stringify(this.state.users))
   };
 
   handleDeleteClick = (e) => {
     e.preventDefault();
-    this.setState({
-      users: this.state.users.filter(user => user.id !== parseInt(e.target.id))
-    })
-    localStorage.setItem("users", JSON.stringify(this.state.users))
+    e.persist();
+    this.setState(prevState => ({
+      users: prevState.users.filter(user => user.id !== parseInt(e.target.id))
+    }))
   }
 
   handleFavoriteClick = (e) => {
@@ -79,7 +78,6 @@ class App extends Component {
     this.setState({
       users: users,
     })
-    localStorage.setItem("users", JSON.stringify(this.state.users))
   }
 
   handleAllDisplay = () => {
@@ -103,7 +101,11 @@ class App extends Component {
     }
   }
 
-
+  componentDidUpdate() {
+    if (JSON.parse(localStorage.getItem("users")) !== this.state.users) {
+      localStorage.setItem("users", JSON.stringify(this.state.users))
+    }
+  }
 
   render() {
     return (
