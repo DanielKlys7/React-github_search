@@ -6,7 +6,7 @@ library.add(faTimes, faStar);
 
 const User = ({ user, handleDeleteClick, handleFavoriteClick }) => {
     return (
-        <div key={user.id} className="singleUser" id={user.id}>
+        <div className="singleUser" id={user.id}>
             <div className="img">
                 <img src={user.avatar_url} alt="profilepic" />
             </div>

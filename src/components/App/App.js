@@ -1,17 +1,11 @@
 import React, { Component } from 'react';
 import './App.sass';
-import InputNickname from './InputNickname';
-import UserList from './UserList'
-import FilterCheck from './Filter'
+import InputNickname from '../InputNickname/InputNickname';
+import UserList from '../UserList/UserList'
+import FilterCheck from '../Filter/Filter'
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.handleAddButton = this.handleAddButton.bind(this);
-    this.handleFetchData = this.handleFetchData.bind(this);
-  }
-
   state = {
     inputValue: '',
     users: [],
@@ -24,7 +18,7 @@ class App extends Component {
     })
   }
 
-  async handleFetchData(name) {
+  handleFetchData = async (name) => {
     let response = await fetch(`https://api.github.com/users/${name}`);
     if (response.status === 200) {
       let data = await response.json();
@@ -32,7 +26,7 @@ class App extends Component {
     }
   }
 
-  async handleAddButton(e) {
+  handleAddButton = async (e) => {
     e.preventDefault();
     const fetchedData = await this.handleFetchData(this.state.inputValue);
     let noDuplicate = true;
@@ -42,11 +36,12 @@ class App extends Component {
       }
     })
     if ((fetchedData !== undefined) && (noDuplicate === true)) {
-      this.setState({
-        users: [...this.state.users, fetchedData],
+      this.setState((prevState) => ({
+        users: [...prevState.users, fetchedData],
         display: "all",
         inputValue: '',
-      })
+      }))
+
     } else {
       console.log("this user doesn't exist or you already have it in your list");
       this.setState({
@@ -65,7 +60,7 @@ class App extends Component {
 
   handleFavoriteClick = (e) => {
     e.preventDefault()
-    const users = this.state.users.map(user => {
+    const users = this.state.users.map((user, index) => {
       if (user.id === parseInt(e.target.id)) {
         if (!user.favorite) {
           user.favorite = true;
@@ -110,9 +105,19 @@ class App extends Component {
   render() {
     return (
       <>
-        <InputNickname inputValue={this.state.inputValue} handleInputChange={this.handleInputChange} handleAddButton={this.handleAddButton} />
-        <FilterCheck display={this.state.display} handleFavClick={this.handleFavDisplay} handleAllClick={this.handleAllDisplay} />
-        <UserList display={this.state.display} handleFavoriteClick={this.handleFavoriteClick} handleDeleteClick={this.handleDeleteClick} users={this.state.users} />
+        <InputNickname
+          inputValue={this.state.inputValue}
+          handleInputChange={this.handleInputChange}
+          handleAddButton={this.handleAddButton} />
+        <FilterCheck
+          display={this.state.display}
+          handleFavClick={this.handleFavDisplay}
+          handleAllClick={this.handleAllDisplay} />
+        <UserList
+          display={this.state.display}
+          handleFavoriteClick={this.handleFavoriteClick}
+          handleDeleteClick={this.handleDeleteClick}
+          users={this.state.users} />
       </>
     )
   }
