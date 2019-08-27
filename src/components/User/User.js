@@ -12,7 +12,7 @@ const User = ({ user, handleDeleteClick, handleFavoriteClick }) => {
             </div>
             <div className="information">
                 <h1>{user.name}</h1>
-                <p><a href={user.html_url} target="_blank" rel="noopener noreferrer">{user.login}</a></p>
+                <p className="login"><a href={user.html_url} target="_blank" rel="noopener noreferrer">@{user.login}</a></p>
                 {user.company ? <p>{user.company}</p> : null}
             </div>
             <div className="buttons">

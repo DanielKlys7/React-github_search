@@ -4,7 +4,6 @@ import InputNickname from '../InputNickname/InputNickname';
 import UserList from '../UserList/UserList'
 import FilterCheck from '../Filter/Filter'
 
-
 class App extends Component {
   state = {
     inputValue: '',
@@ -51,28 +50,17 @@ class App extends Component {
   };
 
   handleDeleteClick = (e) => {
-    e.preventDefault();
-    e.persist();
+    const id = Number(e.target.id)
     this.setState(prevState => ({
-      users: prevState.users.filter(user => user.id !== parseInt(e.target.id))
+      users: prevState.users.filter(user => user.id !== id)
     }))
   }
 
   handleFavoriteClick = (e) => {
-    e.preventDefault()
-    const users = this.state.users.map((user, index) => {
-      if (user.id === parseInt(e.target.id)) {
-        if (!user.favorite) {
-          user.favorite = true;
-        } else {
-          user.favorite = false;
-        }
-      }
-      return user
-    })
-    this.setState({
-      users: users,
-    })
+    const id = Number(e.target.id)
+    this.setState((prevState) => ({
+      users: prevState.users.map(user => user.id === id ? { ...user, favorite: !user.favorite } : user)
+    }))
   }
 
   handleAllDisplay = () => {
